@@ -1,0 +1,81 @@
+CompileFlags:
+  Add:
+    - -I.
+    - -Ikeyboards
+    - -Iusers
+    - -Itmk_core
+    - -Iplatforms
+    - -Iplatforms/chibios
+    - -Iplatforms/chibios/common
+    - -Iplatforms/chibios/common/configs
+    - -Ilib/chibios/os/hal/include
+    - -Ilib/chibios/os/hal/ports/common/ARMCMx
+    - -Ilib/chibios/os/hal/ports/RP/RP2040
+    - -Ilib/chibios/os/common/ports/ARMCMx
+    - -Ilib/chibios/os/rt/include
+    - -Ilib/chibios-contrib/os/hal/ports/RP/LLD
+    - -Idrivers
+    - -Iquantum
+    - -Iquantum/color
+    - -Iquantum/process_keycode
+    - -Iquantum/keymap_extras
+    - -Ikeyboards/crkbd
+    - -Ikeyboards/crkbd/keymaps/default
+    - -Iusers/mmiryoku
+    - -DQMK_KEYBOARD_H=\"crkbd.h\"
+    - -DKEYMAP_C=\"keymap.c\"
+    - -DRP2040
+    - -DCORTEX_M0PLUS
+    - -DARM_MATH_CM0PLUS
+    - -D__ARM_ARCH_6M__=1
+    - -std=gnu11
+  Remove:
+    # Remove ARM-specific compiler flags that clangd doesn't understand
+    - -mcpu=cortex-m0plus
+    - -mthumb
+    - -mabi=aapcs
+    - -mfloat-abi=soft
+    - -fno-common
+    - -ffunction-sections
+    - -fdata-sections
+    - -fno-builtin-printf
+    - -fno-builtin-sprintf
+    - -fno-builtin-fprintf
+    - -fno-builtin-snprintf
+    - -fno-builtin-vprintf
+    - -fno-builtin-vfprintf
+    - -fno-builtin-vsprintf
+    - -fno-builtin-vsnprintf
+    - -fno-builtin-memcpy
+    - -fno-builtin-memset
+    - -fstack-usage
+    - -MMD
+    - -MP
+    - -MF
+    - --specs=*
+    - -Wl,*
+    # Remove any linker flags
+    - -T*
+    - -nostartfiles
+    - -Wl*
+    - -mcall-prologues
+
+Diagnostics:
+  Suppress:
+    - unused-function
+    - unused-parameter
+    - unused-variable
+    - unknown-pragmas
+    - missing-prototypes
+    - incompatible-pointer-types-discards-qualifiers
+  ClangTidy:
+    Remove:
+      - readability-*
+      - google-*
+      - modernize-*
+
+InlayHints:
+  Enabled: false
+
+Index:
+  Background: Build
